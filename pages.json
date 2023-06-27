@@ -1,0 +1,64 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom",
+				"onReachBottomDistance": 150,
+				"enablePullDownRefresh": true
+			}
+		}, {
+			"path": "pages/nvue/index",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+				// "onReachBottomDistance": 150,
+				// "enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/my/index",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "red",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/nvue/index",
+			"text": "nvue"
+		}, {
+			"pagePath": "pages/my/index",
+			"text": "我的"
+		}]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8"
+			// 这个是设置小程序的
+			// #ifdef MP
+			,
+		"backgroundColor": "red"
+			// #endif
+
+			// 这个是设置 ios 的
+			//  解决 ios 下 上下拉动的时候露出的背景颜色
+			// #ifdef APP-PLUS
+			,
+		"backgroundColorTop": "#666",
+		"backgroundColorBottom": "#333"
+		// #endif
+
+	},
+	"uniIdRouter": {}
+}
