@@ -1,54 +1,24 @@
 <template>
-	<u-transition
-		mode="fade"
-		:show="show"
-	>
+	<u-transition mode="fade" :show="show">
 		<view class="u-tag-wrapper">
-			<view
-				class="u-tag"
+			<view class="u-tag"
 				:class="[`u-tag--${shape}`, !plain && `u-tag--${type}`, plain && `u-tag--${type}--plain`, `u-tag--${size}`, plain && plainFill && `u-tag--${type}--plain--fill`]"
-				@tap.stop="clickHandler"
-				:style="[{
+				@tap.stop="clickHandler" :style="[{
 					marginRight: closable ? '10px' : 0,
 					marginTop: closable ? '10px' : 0,
-				}, style]"
-			>
+				}, style]">
 				<slot name="icon">
-					<view
-						class="u-tag__icon"
-						v-if="icon"
-					>
-						<image
-							v-if="$u.test.image(icon)"
-							:src="icon"
-							:style="[imgStyle]"
-						></image>
-						<u-icon
-							v-else
-							:color="elIconColor"
-							:name="icon"
-							:size="iconSize"
-						></u-icon>
+					<view class="u-tag__icon" v-if="icon">
+						<image v-if="$u.test.image(icon)" :src="icon" :style="[imgStyle]"></image>
+						<u-icon v-else :color="elIconColor" :name="icon" :size="iconSize"></u-icon>
 					</view>
 				</slot>
-				<text
-					class="u-tag__text"
-					:style="[textColor]"
-					:class="[`u-tag__text--${type}`, plain && `u-tag__text--${type}--plain`, `u-tag__text--${size}`]"
-				>{{ text }}</text>
+				<text class="u-tag__text" :style="[textColor]"
+					:class="[`u-tag__text--${type}`, plain && `u-tag__text--${type}--plain`, `u-tag__text--${size}`]">{{ text }}</text>
 			</view>
-			<view
-				class="u-tag__close"
-				:class="[`u-tag__close--${size}`]"
-				v-if="closable"
-				@tap.stop="closeHandler"
-				:style="{backgroundColor: closeColor}"
-			>
-				<u-icon
-					name="close"
-					:size="closeSize"
-					color="#ffffff"
-				></u-icon>
+			<view class="u-tag__close" :class="[`u-tag__close--${size}`]" v-if="closable" @tap.stop="closeHandler"
+				:style="{backgroundColor: closeColor}">
+				<u-icon name="close" :size="closeSize" color="#ffffff"></u-icon>
 			</view>
 		</view>
 	</u-transition>
@@ -87,6 +57,9 @@
 
 			}
 		},
+		props: {
+			customizeIconSize: Number
+		},
 		computed: {
 			style() {
 				const style = {}
@@ -96,7 +69,7 @@
 				if (this.color) {
 					style.color = this.color
 				}
-				if(this.borderColor) {
+				if (this.borderColor) {
 					style.borderColor = this.borderColor
 				}
 				return style
@@ -124,7 +97,7 @@
 			// 图标大小
 			iconSize() {
 				const size = this.size === 'large' ? 21 : this.size === 'medium' ? 19 : 16
-				return size
+				return this.customizeIconSize || size
 			},
 			// 图标颜色
 			elIconColor() {
@@ -144,10 +117,7 @@
 	}
 </script>
 
-<style
-	lang="scss"
-	scoped
->
+<style lang="scss" scoped>
 	@import "../../libs/css/components.scss";
 
 	.u-tag-wrapper {

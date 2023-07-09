@@ -12,9 +12,9 @@
 			"path": "pages/nvue/index",
 			"style": {
 				//  去掉默认的导航栏
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
 				// "onReachBottomDistance": 150,
-				// "enablePullDownRefresh": true
+				"enablePullDownRefresh": false
 			}
 		},
 		{
@@ -23,42 +23,145 @@
 				//  去掉默认的导航栏
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/search/index",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			},
+			"enablePullDownRefresh": false
+		}, {
+			"path": "pages/exchangeLink/exchangeLink",
+			"style": {
+				"navigationBarTitleText": "链接转换",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/followBuy/followBuy",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom",
+				// "navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/growGrass/growGrass",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/growGrassCategory/growGrassCategory",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/myFocus/myFocus",
+			"style": {
+				"navigationBarTitleText": "我的关注",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/share/share",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/hotSellingList/hotSellingList",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+		}, {
+			"path": "pages/TalentList/TalentList",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/professionalAssessment/professionalAssessment",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/grassNote/grassNote",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/breakNews/breakNews",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
 		}
+
 	],
 	"tabBar": {
 		"color": "#7A7E83",
-		"selectedColor": "red",
+		"selectedColor": "#f53f3f",
 		"borderStyle": "white",
 		"backgroundColor": "#ffffff",
 		"list": [{
 			"pagePath": "pages/index/index",
+			"iconPath": "/static/icons/home.png",
+			"selectedIconPath": "static/icons/home_active.png",
 			"text": "首页"
 		}, {
-			"pagePath": "pages/nvue/index",
-			"text": "nvue"
+			"pagePath": "pages/followBuy/followBuy",
+			"iconPath": "static/icons/gzm.png",
+			"selectedIconPath": "static/icons/gzm_active.png",
+			"text": "跟着买"
+		}, {
+			"pagePath": "pages/growGrass/growGrass",
+			"iconPath": "static/icons/zc.png",
+			"selectedIconPath": "static/icons/zc_active.png",
+			"text": "种草天地"
+		}, {
+			"pagePath": "pages/share/share",
+			"iconPath": "static/icons/tg.png",
+			"selectedIconPath": "static/icons/tg_active.png",
+			"text": "推广分享"
 		}, {
 			"pagePath": "pages/my/index",
+			"iconPath": "static/icons/my.png",
+			"selectedIconPath": "static/icons/my_active.png",
 			"text": "我的"
 		}]
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8"
-			// 这个是设置小程序的
-			// #ifdef MP
-			,
-		"backgroundColor": "red"
-			// #endif
+		"navigationBarBackgroundColor": "#ffffff"
 
 			// 这个是设置 ios 的
 			//  解决 ios 下 上下拉动的时候露出的背景颜色
 			// #ifdef APP-PLUS
 			,
-		"backgroundColorTop": "#666",
-		"backgroundColorBottom": "#333"
+		"backgroundColorTop": "#f5f6f8",
+		"backgroundColorBottom": "#f5f6f8"
 		// #endif
 
+
+	},
+	"safearea": {
+		"background": "#ffffff",
+		"bottom": {
+			"offset": "auto"
+		}
 	},
 	"uniIdRouter": {}
 }

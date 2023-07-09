@@ -77,3 +77,15 @@ $uni-font-size-paragraph: 15px;
 
 /* uview 变量 */
 @import '@/uni_modules/uview-ui/theme.scss';
+
+//  自定义变量
+//  页面间距
+$ytg-page-spacing: 32rpx;
+
+//  颜色
+
+$ytg-bg: #f5f6f8;
+$ytg-main-black: #444444;
+$ytg-main-red: #f53f3f;
+$ytg-fuzhu-red: #ffece8;
+$ytg-fuzhu-grey: #6f7379;
