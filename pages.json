@@ -152,8 +152,12 @@
 			"path": "pages/makeups/makeups",
 			"style": {
 				//  去掉默认的导航栏
-				"navigationStyle": "custom"
-
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bottom": {
+						"offset": "none"
+					}
+				}
 			}
 
 		}
