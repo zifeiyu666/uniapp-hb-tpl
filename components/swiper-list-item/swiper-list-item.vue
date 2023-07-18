@@ -118,6 +118,11 @@
 
 			handleNavClick(index) {
 				switch (index) {
+					case 0:
+						uni.navigateTo({
+							url: '/pages/newCustomer/newCustomer'
+						})
+						break;
 					case 3:
 						uni.navigateTo({
 							url: '/pages/breakNews/breakNews'

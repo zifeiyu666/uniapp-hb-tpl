@@ -624,14 +624,14 @@
 	.HMfilterDropdown {
 		flex-shrink: 0;
 		width: 100%;
-		position: fixed;
+		position: absolute;
 		// position: sticky;
 		z-index: 997;
 		flex-wrap: nowrap;
 		display: flex;
 		flex-direction: row;
-		top: var(--window-top);
-		margin-top: env(safe-area-inset-top);
+		// top: var(--window-top);
+		// margin-top: env(safe-area-inset-top);
 		left: 0;
 		// top:100px;
 		overflow-y: hidden;
@@ -944,8 +944,8 @@
 
 	.mask {
 		z-index: 10;
-		position: fixed;
-		top: 100px;
+		position: absolute;
+		top: 0px;
 		left: 0;
 		right: 0;
 		bottom: 0;

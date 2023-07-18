@@ -1,89 +1,43 @@
 <template>
-	<view
-		class="u-swiper"
-		:style="{
+	<view class="u-swiper" :style="{
 			backgroundColor: bgColor,
 			height: $u.addUnit(height),
 			borderRadius: $u.addUnit(radius)
-		}"
-	>
-		<view
-			class="u-swiper__loading"
-			v-if="loading"
-		>
+		}">
+		<view class="u-swiper__loading" v-if="loading">
 			<u-loading-icon mode="circle"></u-loading-icon>
 		</view>
-		<swiper
-			v-else
-			class="u-swiper__wrapper"
-			:style="{
+		<swiper v-else class="u-swiper__wrapper" :style="{
 				height: $u.addUnit(height),
-			}"
-			@change="change"
-			:circular="circular"
-			:interval="interval"
-			:duration="duration"
-			:autoplay="autoplay"
-			:current="current"
-			:currentItemId="currentItemId"
-			:previousMargin="$u.addUnit(previousMargin)"
-			:nextMargin="$u.addUnit(nextMargin)"
-			:acceleration="acceleration"
-			:displayMultipleItems="displayMultipleItems"
-			:easingFunction="easingFunction"
-		>
-			<swiper-item
-				class="u-swiper__wrapper__item"
-				v-for="(item, index) in list"
-				:key="index"
-			>
-				<view
-					class="u-swiper__wrapper__item__wrapper"
-					:style="[itemStyle(index)]"
-				>
+			}" @change="change" :circular="circular" :interval="interval" :duration="duration" :autoplay="autoplay"
+			:current="current" :currentItemId="currentItemId" :previousMargin="$u.addUnit(previousMargin)"
+			:nextMargin="$u.addUnit(nextMargin)" :acceleration="acceleration"
+			:displayMultipleItems="displayMultipleItems" :easingFunction="easingFunction">
+			<swiper-item class="u-swiper__wrapper__item" v-for="(item, index) in list" :key="index">
+				<view class="u-swiper__wrapper__item__wrapper" :style="[itemStyle(index)]">
 					<!-- 在nvue中，image图片的宽度默认为屏幕宽度，需要通过flex:1撑开，另外必须设置高度才能显示图片 -->
-					<image
-						class="u-swiper__wrapper__item__wrapper__image"
-						v-if="getItemType(item) === 'image'"
-						:src="getSource(item)"
-						:mode="imgMode"
-						@tap="clickHandler(index)"
-						:style="{
+					<image class="u-swiper__wrapper__item__wrapper__image" v-if="getItemType(item) === 'image'"
+						:src="getSource(item)" :mode="imgMode" @tap="clickHandler(index)" :style="[{
 							height: $u.addUnit(height),
 							borderRadius: $u.addUnit(radius)
-						}"
-					></image>
-					<video
-						class="u-swiper__wrapper__item__wrapper__video"
-						v-if="getItemType(item) === 'video'"
-						:id="`video-${index}`"
-						:enable-progress-gesture="false"
-						:src="getSource(item)"
+						}, $u.addStyle(imageStyle)]"></image>
+					<video class="u-swiper__wrapper__item__wrapper__video" v-if="getItemType(item) === 'video'"
+						:id="`video-${index}`" :enable-progress-gesture="false" :src="getSource(item)"
 						:poster="getPoster(item)"
-						:title="showTitle && $u.test.object(item) && item.title ? item.title : ''"
-						:style="{
+						:title="showTitle && $u.test.object(item) && item.title ? item.title : ''" :style="{
 							height: $u.addUnit(height)
-						}"
-						controls
-						@tap="clickHandler(index)"
-					></video>
-					<text
-						v-if="showTitle && $u.test.object(item) && item.title && $u.test.image(getSource(item))"
+						}" controls @tap="clickHandler(index)"></video>
+					<text v-if="showTitle && $u.test.object(item) && item.title && $u.test.image(getSource(item))"
 						class="u-swiper__wrapper__item__wrapper__title u-line-1"
-					>{{ item.title }}</text>
+						:style="[$u.addStyle(titleStyle)]">{{ item.title }}</text>
 				</view>
 			</swiper-item>
 		</swiper>
 		<view class="u-swiper__indicator" :style="[$u.addStyle(indicatorStyle)]">
 			<slot name="indicator">
-				<u-swiper-indicator
-					v-if="!loading && indicator && !showTitle"
-					:indicatorActiveColor="indicatorActiveColor"
-					:indicatorInactiveColor="indicatorInactiveColor"
-					:length="list.length"
-					:current="currentIndex"
-					:indicatorMode="indicatorMode"
-				></u-swiper-indicator>
+				<u-swiper-indicator v-if="!loading && indicator " :indicatorActiveColor="indicatorActiveColor"
+					:indicatorInactiveColor="indicatorInactiveColor" :length="list.length" :current="currentIndex"
+					:indicatorMode="indicatorMode"></u-swiper-indicator>
 			</slot>
 		</view>
 	</view>
@@ -133,7 +87,7 @@
 		},
 		watch: {
 			current(val, preVal) {
-				if(val === preVal) return;
+				if (val === preVal) return;
 				this.currentIndex = val; // 和上游数据关联上
 			}
 		},
@@ -154,15 +108,15 @@
 			}
 		},
 		methods: {
-      getItemType(item) {
-        if (typeof item === 'string') return uni.$u.test.video(this.getSource(item)) ? 'video' : 'image'
-        if (typeof item === 'object' && this.keyName) {
-          if (!item.type) return uni.$u.test.video(this.getSource(item)) ? 'video' : 'image'
-          if (item.type === 'image') return 'image'
-          if (item.type === 'video') return 'video'
-          return 'image'
-        }
-      },
+			getItemType(item) {
+				if (typeof item === 'string') return uni.$u.test.video(this.getSource(item)) ? 'video' : 'image'
+				if (typeof item === 'object' && this.keyName) {
+					if (!item.type) return uni.$u.test.video(this.getSource(item)) ? 'video' : 'image'
+					if (item.type === 'image') return 'image'
+					if (item.type === 'video') return 'video'
+					return 'image'
+				}
+			},
 			// 获取目标路径，可能数组中为字符串，对象的形式，额外可指定对象的目标属性名keyName
 			getSource(item) {
 				if (typeof item === 'string') return item
@@ -209,7 +163,8 @@
 		justify-content: center;
 		align-items: center;
 		position: relative;
-		overflow: hidden;
+		// overflow: hidden;
+		overflow: visible;
 
 		&__wrapper {
 			flex: 1;

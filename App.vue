@@ -84,6 +84,11 @@
 		font-size: 14px;
 	}
 
+	.font-main-red-12 {
+		color: $ytg-main-red;
+		font-size: 12px;
+	}
+
 	.font-main-grey-14 {
 		color: #6F7379;
 		font-size: 14px;
@@ -165,6 +170,33 @@
 		box-shadow: 0px 4px 4px 0px rgba(245, 66, 66, 0.10);
 	}
 
+	.square-pink-btn {
+		border-radius: 2px;
+		background: #F5F6F8;
+		line-height: 29px;
+		padding: 12rpx 16rpx;
+		display: inline-block;
+	}
+
+	.date-wrapper {
+		border-radius: 2px;
+		background: var(--unnamed, #FFECE8);
+		color: var(--unnamed, #F53F3F);
+		font-size: 10px;
+		display: inline-block;
+		line-height: 16px;
+		padding: 0 6px;
+	}
+
+
+	//  渐变下划线
+	.title-underline {
+		border-bottom: 6px solid;
+		border-image-source: linear-gradient(270deg, #F53F3F 0%, rgba(245, 63, 63, 0.00) 100%);
+		border-image-slice: 1;
+		line-height: 10px;
+		margin: 10rpx 0;
+	}
 
 	// 颜色变量
 	:root {

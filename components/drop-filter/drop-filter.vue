@@ -364,21 +364,21 @@
 	.grade-button-li:nth-of-type(1) {
 		background: rgba(235, 64, 83, 0.06);
 		border-radius: 0rpx 0rpx 0rpx 20rpx;
-		color: #EB4053;
+		color: var(--main-red);
 	}
 
 	.grade-button-li:nth-of-type(2) {
-		background: #EB4053;
+		background: var(--main-red);
 		border-radius: 0rpx 0rpx 20rpx 0rpx;
 		color: #FFFFFF;
 	}
 
 	.gradeCusom-input-required {
-		border: 1rpx solid #EB4053;
+		border: 1rpx solid var(--main-red);
 		box-sizing: border-box;
 	}
 
 	.custom-input-focus {
-		border: 1rpx solid #EB4053;
+		border: 1rpx solid var(--main-red);
 	}
 </style>

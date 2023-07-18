@@ -24,13 +24,22 @@
 				</view>
 			</z-tabs>
 		</template>
-		<!-- swiper必须设置height:100%，因为swiper有默认的高度，只有设置高度100%才可以铺满页面  -->
+
 		<swiper class="swiper" :current="current" @transition="swiperTransition"
 			@animationfinish="swiperAnimationfinish">
 			<swiper-item class="swiper-item" v-for="(item, index) in tabList" :key="index">
-				<!-- 这里的swiper-list-item为demo中为演示用定义的组件，列表及分页代码在swiper-list-item组件内 -->
-				<!-- 请注意，swiper-list-item非z-paging内置组件，在自己的项目中必须自己创建，若未创建则会报组件不存在的错误 -->
-				<swiper-list-item :tabIndex="index" :currentIndex="current"></swiper-list-item>
+
+				<!-- 首页 -->
+				<swiper-list-item v-if='item.name === "首页"' :tabIndex="index"
+					:currentIndex="current"></swiper-list-item>
+
+				<!-- 母婴 -->
+				<muying-list-item v-if='item.name === "母婴"'></muying-list-item>
+
+				<!-- 美妆 -->
+				<makeups v-if='item.name === "美妆"'></makeups>
+
+
 			</swiper-item>
 		</swiper>
 	</z-paging-swiper>
@@ -40,7 +49,13 @@
 	import {
 		getMenu
 	} from '../../config/api.js'
+
+	import makeups from './components/makeups/index.vue'
+
 	export default {
+		components: {
+			makeups
+		},
 		data() {
 			return {
 				current: 0, // tabs组件的current值，表示当前活动的tab选项
@@ -51,23 +66,17 @@
 					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
 				],
 				tabList: [{
-					name: '关注',
+					name: '首页',
 				}, {
-					name: '推荐',
+					name: '母婴',
 				}, {
-					name: '电影'
+					name: '美妆'
 				}, {
-					name: '科技'
+					name: '衣服'
 				}, {
-					name: '音乐'
+					name: '家居'
 				}, {
-					name: '美食'
-				}, {
-					name: '文化'
-				}, {
-					name: '财经'
-				}, {
-					name: '手工'
+					name: '家电'
 				}]
 			};
 		},

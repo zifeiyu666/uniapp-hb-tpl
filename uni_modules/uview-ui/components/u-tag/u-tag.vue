@@ -13,7 +13,7 @@
 						<u-icon v-else :color="elIconColor" :name="icon" :size="iconSize"></u-icon>
 					</view>
 				</slot>
-				<text class="u-tag__text" :style="[textColor]"
+				<text style='white-space:nowrap;' class="u-tag__text" :style="[textColor]"
 					:class="[`u-tag__text--${type}`, plain && `u-tag__text--${type}--plain`, `u-tag__text--${size}`]">{{ text }}</text>
 			</view>
 			<view class="u-tag__close" :class="[`u-tag__close--${size}`]" v-if="closable" @tap.stop="closeHandler"
@@ -64,7 +64,7 @@
 			style() {
 				const style = {}
 				if (this.bgColor) {
-					style.backgroundColor = this.bgColor
+					style.background = this.bgColor
 				}
 				if (this.color) {
 					style.color = this.color
@@ -72,6 +72,7 @@
 				if (this.borderColor) {
 					style.borderColor = this.borderColor
 				}
+				console.log(style);
 				return style
 			},
 			// nvue下，文本颜色无法继承父元素
@@ -177,7 +178,7 @@
 		}
 
 		&--primary {
-			background-color: $u-primary;
+			background: $u-primary;
 			border-width: 1px;
 			border-color: $u-primary;
 		}
@@ -188,7 +189,7 @@
 		}
 
 		&--primary--plain--fill {
-			background-color: #ecf5ff;
+			background: #ecf5ff;
 		}
 
 		&__text--primary {
@@ -200,7 +201,7 @@
 		}
 
 		&--error {
-			background-color: $u-error;
+			background: $u-error;
 			border-width: 1px;
 			border-color: $u-error;
 		}
@@ -211,7 +212,7 @@
 		}
 
 		&--error--plain--fill {
-			background-color: #fef0f0;
+			background: #fef0f0;
 		}
 
 		&__text--error {
@@ -223,7 +224,7 @@
 		}
 
 		&--warning {
-			background-color: $u-warning;
+			background: $u-warning;
 			border-width: 1px;
 			border-color: $u-warning;
 		}
@@ -234,7 +235,7 @@
 		}
 
 		&--warning--plain--fill {
-			background-color: #fdf6ec;
+			background: #fdf6ec;
 		}
 
 		&__text--warning {
@@ -246,7 +247,7 @@
 		}
 
 		&--success {
-			background-color: $u-success;
+			background: $u-success;
 			border-width: 1px;
 			border-color: $u-success;
 		}
@@ -257,7 +258,7 @@
 		}
 
 		&--success--plain--fill {
-			background-color: #f5fff0;
+			background: #f5fff0;
 		}
 
 		&__text--success {
@@ -269,7 +270,7 @@
 		}
 
 		&--info {
-			background-color: $u-info;
+			background: $u-info;
 			border-width: 1px;
 			border-color: $u-info;
 		}
@@ -280,7 +281,7 @@
 		}
 
 		&--info--plain--fill {
-			background-color: #f4f4f5;
+			background: #f4f4f5;
 		}
 
 		&__text--info {
@@ -297,7 +298,7 @@
 			top: 10px;
 			right: 10px;
 			border-radius: 100px;
-			background-color: #C6C7CB;
+			background: #C6C7CB;
 			@include flex(row);
 			align-items: center;
 			justify-content: center;

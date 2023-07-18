@@ -4,9 +4,7 @@
 			"path": "pages/index/index",
 			"style": {
 				//  去掉默认的导航栏
-				"navigationStyle": "custom",
-				"onReachBottomDistance": 150,
-				"enablePullDownRefresh": true
+				"navigationStyle": "custom"
 			}
 		}, {
 			"path": "pages/nvue/index",
@@ -110,6 +108,55 @@
 
 		}
 
+		, {
+			"path": "pages/submitNote/submitNote",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+
+			}
+
+		}, {
+			"path": "pages/submitBreakNews/submitBreakNews",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+
+			}
+
+		}, {
+			"path": "pages/indexClassify/indexClassify",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/newCustomer/newCustomer",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+
+			}
+
+
+		}, {
+			"path": "pages/freeOrderDetails/freeOrderDetails",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+
+			}
+
+		}, {
+			"path": "pages/makeups/makeups",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+
+			}
+
+		}
 	],
 	"tabBar": {
 		"color": "#7A7E83",

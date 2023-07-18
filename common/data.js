@@ -37,9 +37,8 @@
 */
 // 以下演示数据中,我故意把value设置成跟name一样,只是为了方便演示,使示例更加易懂,实际使用时候value应该是一个标识,给后台识别所用的.
 // 数据较长，请仔细查看。
-export default [
-	{
-		"name":'样式1',
+export default [{
+		"name": '样式11',
 		"type": 'hierarchy-column',
 		"submenu": [{
 				"name": '全部分类',
@@ -664,7 +663,7 @@ export default [
 					{
 						"name": "个人护理",
 						"value": "个人护理"
-						
+
 					}
 				]
 			},
@@ -733,7 +732,7 @@ export default [
 		]
 	},
 	{
-		"name":'样式2',
+		"name": '样式22',
 		"type": 'hierarchy',
 		"submenu": [{
 				"name": '全部分类',
@@ -1358,7 +1357,7 @@ export default [
 					{
 						"name": "个人护理",
 						"value": "个人护理"
-						
+
 					}
 				]
 			},
@@ -1427,7 +1426,7 @@ export default [
 		]
 	},
 	{
-		name:'附近',
+		"name": '附近',
 		"type": 'hierarchy',
 		"submenu": [{
 				"name": '附近',
@@ -1753,7 +1752,7 @@ export default [
 		]
 	},
 	{
-		"name":'单选',
+		"name": '单选',
 		"type": 'radio',
 		"submenu": [{
 				"name": "优惠(单选)",
@@ -1830,4 +1829,3 @@ export default [
 		]
 	}
 ]
-
