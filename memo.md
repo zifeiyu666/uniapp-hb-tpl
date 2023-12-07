@@ -1,3 +1,4 @@
+
 ## 常用结构
 <!-- 粉底红字 -->
 <u-tag text="标签" shape="circle" borderColor="#FFECE8" bgColor="#FFECE8" color="#f53f3f"> </u-tag>
@@ -18,3 +19,14 @@
 <cn-money class='u-m-l-10' color='#f53f3f' :money="68.45" :size="28"></cn-money>
 
 env(safe-area-inset-top)
+
+env(safe-area-inset-bottom)
+
+
+<!--  商品形式 -->
+<!-- 横版商品 例如跟着买 -->
+<goods-list-row-item></goods-list-row-item>
+
+
+<!-- 表单切换分类 -->
+<circle-tabs :tabList="classifyList" defaultCurrent="jsyp"></circle-tabs>

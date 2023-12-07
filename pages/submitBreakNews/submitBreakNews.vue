@@ -15,8 +15,8 @@
 			<u--textarea placeholder="记录你的商品开箱、购后点评、购买攻略、价格优惠信息，与值友共同交流分享~" height="180" clearable border="none"
 				v-model="value" @change="change"></u--textarea>
 			<view class='square-pink-btn'>
-				<u-icon name='/static/common/goods.png' size="17" label="添加商品" labelColor="var(--main-red)"
-					labelSize="12">
+				<u-icon name='/static/common/goods.png' size="17" @click="handleAddGoods" label="添加商品"
+					labelColor="var(--main-red)" labelSize="12">
 
 				</u-icon>
 			</view>
@@ -33,10 +33,22 @@
 	export default {
 		data() {
 			return {
-				fileList1: []
+				fileList1: [],
+				selected: []
 			}
 		},
+		mounted() {
+			uni.$on('add-goods-confirm', (val) => {
+				this.selected = val.selected
+			})
+		},
 		methods: {
+			//  添加商品
+			handleAddGoods() {
+				uni.navigateTo({
+					url: '/pages/goodsList/goodsList'
+				})
+			},
 			goBack() {
 				uni.navigateBack()
 			},

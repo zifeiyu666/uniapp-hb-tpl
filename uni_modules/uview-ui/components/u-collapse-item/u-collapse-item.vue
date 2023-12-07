@@ -1,17 +1,8 @@
 <template>
 	<view class="u-collapse-item">
-		<u-cell
-			:title="title"
-			:value="value"
-			:label="label"
-			:icon="icon"
-			:isLink="isLink"
-			:clickable="clickable"
-			:border="parentData.border && showBorder"
-			@click="clickHandler"
-			:arrowDirection="expanded ? 'up' : 'down'"
-			:disabled="disabled"
-		>
+		<u-cell v-bind='$attrs' :title="title" :value="value" :label="label" :icon="icon" :isLink="isLink"
+			:border="parentData.border && showBorder" @click="clickHandler" :arrowDirection="expanded ? 'up' : 'down'"
+			:disabled="disabled">
 			<!-- #ifndef MP-WEIXIN -->
 			<!-- 微信小程序不支持，因为微信中不支持 <slot name="title" slot="title" />的写法 -->
 			<template slot="title">
@@ -28,16 +19,10 @@
 			</template>
 			<!-- #endif -->
 		</u-cell>
-		<view
-			class="u-collapse-item__content"
-			:animation="animationData"
-			ref="animation"
-		>
-			<view
-				class="u-collapse-item__content__text content-class"
-				:id="elId"
-				:ref="elId"
-			><slot /></view>
+		<view class="u-collapse-item__content" :animation="animationData" ref="animation">
+			<view class="u-collapse-item__content__text content-class" :id="elId" :ref="elId">
+				<slot />
+			</view>
 		</view>
 		<u-line v-if="parentData.border"></u-line>
 	</view>

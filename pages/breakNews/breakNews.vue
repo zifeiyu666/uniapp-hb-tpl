@@ -40,7 +40,8 @@
 										</view>
 									</u-col>
 									<u-col :span='4'>
-										<view class='u-flex u-flex-column u-flex-center '>
+										<view class='u-flex u-flex-column u-flex-center '
+											@click='handleNav("/pages/TalentList/TalentList")'>
 											<u-icon name='/static/breakNews/drbd.png' size='46'></u-icon>
 											<view class='u-m-t-16'>
 												达人榜单
@@ -145,6 +146,11 @@
 			},
 		},
 		methods: {
+			handleNav(url) {
+				uni.navigateTo({
+					url
+				})
+			},
 			navToSubmitNote() {
 				uni.navigateTo({
 					url: '/pages/submitNote/submitNote'

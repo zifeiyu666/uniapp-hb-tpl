@@ -53,19 +53,22 @@
 					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
 				],
 				list: [{
-						title: '我的关注',
+						title: '每日优选',
 						icon: '/static/growGrass/focus.png'
 					},
 					{
 						title: '达人榜单',
+						path: '/pages/TalentList/TalentList',
 						icon: '/static/growGrass/list.png'
 					},
 					{
 						title: '种草技能',
+						path: '/pages/grassNote/grassNote',
 						icon: '/static/growGrass/grow.png'
 					},
 					{
 						title: '专业测评',
+						path: '/pages/professionalAssessment/professionalAssessment',
 						icon: '/static/growGrass/master.png'
 					},
 					{

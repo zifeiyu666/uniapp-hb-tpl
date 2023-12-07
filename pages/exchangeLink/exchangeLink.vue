@@ -6,19 +6,20 @@
 					<u-icon name='/static/link/link.png' size="18" class='u-m-r-6'></u-icon>
 					待转链接
 				</view>
-				<view class="font-main-black-14 u-flex u-col-center">
+				<view @click="clearUrl" class="font-main-black-14 u-flex u-col-center">
 					<u-icon name='/static/link/close.png' size="18" class='u-m-r-6'></u-icon>
 					清空
 				</view>
 			</view>
 
 			<view class='link-content'>
-				商品链接地址xxxxxxx//sfs/
+				<u--textarea :style="{border: 'none'}" v-model="link" placeholder="请输入要转换的链接"
+					height='200rpx'></u--textarea>
 			</view>
 		</view>
 
 		<view class='u-m-t-30'>
-			<u-button text="转换为我的链接" shape='circle' type='primary'
+			<u-button text="转换为我的链接" @click="changeLink" shape='circle' type='primary'
 				color='linear-gradient(90deg, #FF7B7B 0%, #F53F3F 100%)'></u-button>
 		</view>
 
@@ -46,14 +47,28 @@
 </template>
 
 <script>
+	import {
+		convertGoodsUrl
+	} from '@/config/api.js'
 	export default {
 		data() {
 			return {
-
+				link: `【李佳琦直播间】卡诗山茶花护发精华油精油柔顺* 209.00元 热门商品 这么大的福利赶紧抢哦~ h:/37￥ CZ3457 tgRsWdwaD9E￥ `
 			}
 		},
 		methods: {
-
+			clearUrl() {
+				this.link = ''
+			},
+			changeLink() {
+				if (this.link) {
+					convertGoodsUrl({
+						goods_url: this.link
+					}).then(res => {
+						console.log(res);
+					})
+				}
+			}
 		}
 	}
 </script>

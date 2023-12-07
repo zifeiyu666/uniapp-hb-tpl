@@ -1,0 +1,18 @@
+{
+    "id": "xuan-switch",
+    "name": "switch开关，按钮可嵌套内容，支持异步关闭、滑动动画效果、禁用以及颜色配置",
+    "version": "1.5",
+    "description": "鉴于官方switch不能够支持字体配置，特写此插件。（组件代码简洁易懂，可在原有基础上二次开发）",
+    "keywords": [
+        "switch",
+        "switch开关",
+        "开关组件",
+        "异步开关"
+    ],
+    "dcloudext": {
+        "category": [
+            "前端组件",
+            "通用组件"
+        ]
+    }
+}

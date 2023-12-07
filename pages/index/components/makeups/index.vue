@@ -204,7 +204,12 @@
 				switch (item.title) {
 					case '颜究院':
 						uni.navigateTo({
-							url: '/pages/makeups/makeups'
+							url: '/pages/yanJiuYuan/yanJiuYuan'
+						})
+						break;
+					case 'AR测肤':
+						uni.navigateTo({
+							url: '/pages/arTest/arTest'
 						})
 						break;
 					default:

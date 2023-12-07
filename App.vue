@@ -1,13 +1,53 @@
 <script>
+	import {
+		mapMutations,
+		mapGetters,
+		mapState
+	} from 'vuex';
+	// import {
+	// 	getUserInfo
+	// } from '@/config/api.js'
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+
 		},
 		onShow: function() {
 			console.log('App Show')
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		computed: {
+			...mapGetters(['token']),
+			...mapState(['userInfo'])
+		},
+		methods: {
+			...mapMutations(['login']),
+		},
+		mounted() {
+			// 重新获取 userInfo
+			if (!this.userInfo.uid && this.token) {
+
+				uni.request({
+					url: 'http://dev.youtogo.cn/api/index/user_info',
+					header: {
+						'x-auth-token': this.token
+					},
+					success: (res) => {
+						const {
+							data
+						} = res
+						const {
+							code,
+							message
+						} = data
+						if (code === 0 && data.data) {
+							this.login(data.data)
+						}
+					}
+				})
+			}
 		}
 	}
 </script>
@@ -92,6 +132,11 @@
 	.font-main-grey-14 {
 		color: #6F7379;
 		font-size: 14px;
+	}
+
+	.font-main-grey-12 {
+		color: #6F7379;
+		font-size: 12px;
 	}
 
 	.font-tips-grey-12 {

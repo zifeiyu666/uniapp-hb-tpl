@@ -1,9 +1,12 @@
 import App from './App'
+import store from './store'
+Vue.prototype.$store = store
 
 
 // uview 引入
 import uView from '@/uni_modules/uview-ui'
 Vue.use(uView)
+
 
 // #ifndef VUE3
 import Vue from 'vue'

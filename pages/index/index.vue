@@ -17,8 +17,9 @@
 				</view>
 			</view>
 
-			<z-tabs active-color='#f53f3f' inactive-color='#333' ref="tabs" bg-color='rgba(0,0,0,0)' :list="tabList"
-				:current="current" @change="tabsChange">
+			<z-tabs active-color='#f53f3f' :bar-style="{'border-radius': '1px',
+					'background': 'linear-gradient(270deg, #F53F3F 20%, rgba(245, 63, 63, 0.00) 100%)'}" inactive-color='#333'
+				ref="tabs" bg-color='rgba(0,0,0,0)' :list="tabList" :current="current" @change="tabsChange">
 				<view slot="right" style="padding-left: 4px;" @tap="$u.toast('插槽被点击')">
 					<u-icon name="list" size="21" bold></u-icon>
 				</view>
@@ -81,9 +82,12 @@
 			};
 		},
 		methods: {
+			setCurrent(index) {
+				this.current = index
+			},
 			//tabs通知swiper切换
-			tabChange(index) {
-				this._setCurrent(index);
+			tabsChange(index) {
+				this.setCurrent(index);
 			},
 			//swiper滑动中
 			swiperTransition(e) {

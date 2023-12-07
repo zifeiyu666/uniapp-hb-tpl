@@ -152,14 +152,145 @@
 			"path": "pages/makeups/makeups",
 			"style": {
 				//  去掉默认的导航栏
-				"navigationStyle": "custom",
-				"app-plus": {
-					"bottom": {
-						"offset": "none"
-					}
-				}
+				"navigationStyle": "custom"
 			}
 
+		}, {
+			"path": "pages/yanJiuYuan/yanJiuYuan",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/arTest/arTest",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/register/register",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/infoCenter/infoCenter",
+			"style": {
+				"navigationBarTitleText": "消息中心",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/userCenter/userCenter",
+			"style": {
+				"navigationBarTitleText": "个人主页",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/myCollection/myCollection",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/myHistory/myHistory",
+			"style": {
+				"navigationBarTitleText": "我的足迹",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/myFans/myFans",
+			"style": {
+				"navigationBarTitleText": "我的粉丝",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/myAllFocus/myAllFocus",
+			"style": {
+				"navigationBarTitleText": "我的关注",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/myOrders/myOrders",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
+		}, {
+			"path": "pages/settings/settings",
+			"style": {
+				"navigationBarTitleText": "个人设置",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/myIncome/myIncome",
+			"style": {
+				"navigationBarTitleText": "我的收益",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/billingDetails/billingDetails",
+			"style": {
+				"navigationBarTitleText": "结算明细",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/balanceChange/balanceChange",
+			"style": {
+				"navigationBarTitleText": "余额变动",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			// 发文章添加商品界面
+			"path": "pages/goodsList/goodsList",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/creationManagement/creationManagement",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
+
+		},
+		{
+			"path": "pages/authorize/authorize",
+			"style": {
+				"navigationBarTitleText": "账号绑定与授权",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/taoBao/taoBao",
+			"style": {
+				//  去掉默认的导航栏
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"tabBar": {
@@ -206,13 +337,9 @@
 		"backgroundColorBottom": "#f5f6f8"
 		// #endif
 
+		//  要设置安全区域 需要在 manifest.json 的 app-plus 中去设置
 
-	},
-	"safearea": {
-		"background": "#ffffff",
-		"bottom": {
-			"offset": "auto"
-		}
+
 	},
 	"uniIdRouter": {}
 }

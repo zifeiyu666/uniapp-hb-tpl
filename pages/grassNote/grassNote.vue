@@ -103,9 +103,12 @@
 				})
 			},
 
+			setCurrent(index) {
+				this.current = index
+			},
 			//tabs通知swiper切换
-			tabChange(index) {
-				this._setCurrent(index);
+			tabsChange(index) {
+				this.setCurrent(index);
 			},
 			//swiper滑动中
 			swiperTransition(e) {

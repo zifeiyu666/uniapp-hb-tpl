@@ -7,7 +7,7 @@
 		<z-paging ref="paging" v-model="dataList" @query="queryList" :fixed="false">
 			<u-swiper :list="list1"></u-swiper>
 			<u-grid @click='handleNavClick' class='u-m-t-26' :border="false" col="5">
-				<u-grid-item v-for="(listItem,listIndex) in list" :key="listIndex">
+				<u-grid-item v-for="(listItem,listIndex) in list" @click="handleNav(listItem.url)" :key="listIndex">
 					<u-icon :customStyle="{paddingTop:20+'rpx'}" :name="'/static/icons/index_icon' + listIndex + '.png'"
 						:size="52"></u-icon>
 					<text class="grid-text">{{listItem.title}}</text>
@@ -56,7 +56,8 @@
 						title: '颜研社'
 					},
 					{
-						title: '淘宝'
+						title: '淘宝',
+						url: '/pages/taoBao/taoBao'
 					},
 					{
 						title: '京东'
@@ -115,6 +116,13 @@
 			},
 		},
 		methods: {
+			handleNav(url) {
+				if (url) {
+					uni.navigateTo({
+						url: url
+					})
+				}
+			},
 
 			handleNavClick(index) {
 				switch (index) {

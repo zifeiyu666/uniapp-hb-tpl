@@ -4,44 +4,50 @@
 			<view class='u-flex u-row-between u-m-t-10 u-col-center'>
 				<view class='u-flex'>
 
-					<u-avatar></u-avatar>
+					<u-avatar :src='userInfo.avatar'></u-avatar>
 					<view class='u-m-l-24'>
-						<view class='font-main-black-18 '>江来</view>
-						<view class='link'>
+						<view class='font-main-black-18 ' @click='handleClickNickName'>
+							{{hasLogin ? userInfo.nickname : '游客'}}
+						</view>
+						<view class='link' v-if='hasLogin'>
 							个人主页
 						</view>
 					</view>
 				</view>
 				<view class='u-flex'>
-					<view class='u-rela msg-box'>
+					<!--  消息 -->
+					<view class='u-rela msg-box' @click="handleNav('/pages/infoCenter/infoCenter')">
 						<u-icon class='msg-icon' size='22' name="/static/icons/message.png"></u-icon>
 						<u-badge class='u-abso num-box' type="error" max="99" value="10"></u-badge>
 					</view>
-					<u-icon class='msg-icon u-m-l-10' size='22' name="/static/my/setting.png"></u-icon>
+					<!-- 设置 -->
+					<u-icon @click="handleNav('/pages/settings/settings')" class='msg-icon u-m-l-10' size='22'
+						name="/static/my/setting.png"></u-icon>
 				</view>
 			</view>
 			<u-row class="u-m-t-40">
-				<u-col :span='3'>
+				<u-col :span='3' @click="handleNav('/pages/myCollection/myCollection')">
 					<view class='u-flex u-flex-column u-row-center u-col-center'>
 						<view class='font-main-black-20'>6</view>
 						<view class='font-main-grey-14'>收藏</view>
 					</view>
 				</u-col>
-				<u-col :span='3'>
+				<u-col :span='3' @click="handleNav('/pages/myHistory/myHistory')">
 					<view class='u-flex u-flex-column u-row-center u-col-center'>
 						<view class='font-main-black-20'>6</view>
 						<view class='font-main-grey-14'>足迹</view>
 					</view>
 				</u-col>
 				<u-col :span='3'>
-					<view @click="navToFocusPage" class='u-flex u-flex-column u-row-center u-col-center'>
+					<view @click="handleNav('/pages/myAllFocus/myAllFocus')"
+						class='u-flex u-flex-column u-row-center u-col-center'>
 						<view class='font-main-black-20'>6</view>
 						<view class='font-main-grey-14'>关注</view>
 					</view>
 				</u-col>
-				<u-col :span='3'>
+				<u-col :span='3' @click="handleNav('/pages/myFans/myFans')">
 					<view class='u-flex u-flex-column u-row-center u-col-center'>
-						<view class='font-main-black-20'>6</view>
+						<view class='font-main-black-20'>{{userInfo.follower_notice}}</view>
 						<view class='font-main-grey-14'>粉丝</view>
 					</view>
 				</u-col>
@@ -96,25 +102,29 @@
 					<u-col :span='3'>
 						<view class='u-flex u-flex-column u-row-center u-col-center'>
 							<u-icon name='/static/my/order.png' size='26'></u-icon>
-							<view class='font-main-black-14 u-m-t-10'>我的订单</view>
+							<view @click="handleNav('/pages/myOrders/myOrders')" class='font-main-black-14 u-m-t-10'>
+								我的订单</view>
 						</view>
 					</u-col>
 					<u-col :span='3'>
 						<view class='u-flex u-flex-column u-row-center u-col-center'>
 							<u-icon name='/static/my/write.png' size='26'></u-icon>
-							<view class='font-main-black-14 u-m-t-10'>创作管理</view>
+							<view class='font-main-black-14 u-m-t-10'
+								@click="handleNav('/pages/creationManagement/creationManagement')">创作管理</view>
 						</view>
 					</u-col>
 					<u-col :span='3'>
 						<view class='u-flex u-flex-column u-row-center u-col-center'>
 							<u-icon name='/static/my/tips.png' size='26'></u-icon>
-							<view class='font-main-black-14 u-m-t-10'>创作灵感</view>
+							<view class='font-main-black-14 u-m-t-10' @click="handleNav('/pages/breakNews/breakNews')">
+								创作灵感</view>
 						</view>
 					</u-col>
 					<u-col :span='3'>
 						<view class='u-flex u-flex-column u-row-center u-col-center'>
 							<u-icon name='/static/my/income.png' size='26'></u-icon>
-							<view class='font-main-black-14 u-m-t-10'>我的收益</view>
+							<view @click="handleNav('/pages/myIncome/myIncome')" class='font-main-black-14 u-m-t-10'>
+								我的收益</view>
 						</view>
 					</u-col>
 				</u-row>
@@ -124,6 +134,9 @@
 </template>
 
 <script>
+	import {
+		mapState
+	} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -133,11 +146,30 @@
 		onLoad() {
 
 		},
+		computed: {
+			...mapState(["userInfo", "hasLogin"]),
+		},
 		methods: {
+			handleNav(url) {
+				uni.navigateTo({
+					url
+				})
+			},
 			navToFocusPage() {
 				uni.navigateTo({
 					url: '/pages/myFocus/myFocus'
 				})
+			},
+			handleClickNickName() {
+				if (!this.hasLogin) {
+					uni.navigateTo({
+						url: '/pages/login/login'
+					})
+				} else {
+					uni.navigateTo({
+						url: '/pages/userCenter/userCenter'
+					})
+				}
 			}
 		}
 	}

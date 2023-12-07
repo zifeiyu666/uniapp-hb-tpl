@@ -3,7 +3,7 @@
 		<refresh-navbar placeholder iconColor='#444' rightIcon="/static/common/share.png"></refresh-navbar>
 		<view class='u-m-t-80' style='width: 100%;height: 450px;'>
 
-			<z-swiper v-model="list" :options="options">
+			<z-swiper @slideChange="onChange" ref="zSwiper" v-model="list" :options="options">
 				<z-swiper-item :custom-style="slideCustomStyle" v-for="(item,index) in list" :key="index">
 					<view class='card-item'>
 						<view class="xuhao">
@@ -16,7 +16,7 @@
 							洗完脸后不在脸上涂任何产品，2-3小时后，你的皮肤会?
 						</view>
 						<view>
-							<view class='item' v-for='i in item.list' :key='i.key'
+							<view @click='() => handleAnsower(i, item)' class='item' v-for='i in item.list' :key='i.key'
 								:class='{active: item.selected === i.key}'>
 								{{i.key}}
 								{{i.content}}
@@ -27,8 +27,16 @@
 
 				</z-swiper-item>
 			</z-swiper>
-			<view class="tihao">
+			<view class='u-p-32' v-if='isAllFinished'>
+				<u-button text="提交" shape='circle' type='primary'
+					color='linear-gradient(90deg, #FF7B7B 0%, #F53F3F 100%)'></u-button>
+			</view>
 
+			<view class="tihao">
+				<view class="item" @click="slideTo(index)" v-for='(item,index) in list'
+					:class='{finished:item.selected,current:currentQuestionIndex==index}' :key='item'>
+					{{index + 1}}
+				</view>
 			</view>
 		</view>
 	</view>
@@ -38,6 +46,7 @@
 	export default {
 		data() {
 			return {
+				currentQuestionIndex: 0,
 				slideCustomStyle: {
 					display: 'flex',
 					alignItems: 'center',
@@ -95,7 +104,7 @@
 							content: '能看到明显的油光'
 						}
 					],
-					selected: 'A'
+					selected: ''
 				}, {
 					index: '03',
 					list: [{
@@ -115,7 +124,7 @@
 							content: '能看到明显的油光'
 						}
 					],
-					selected: 'A'
+					selected: ''
 				}, {
 					index: '04',
 					list: [{
@@ -135,7 +144,7 @@
 							content: '能看到明显的油光'
 						}
 					],
-					selected: 'A'
+					selected: ''
 				}, {
 					index: '05',
 					list: [{
@@ -155,12 +164,33 @@
 							content: '能看到明显的油光'
 						}
 					],
-					selected: 'A'
+					selected: ''
 				}]
 			}
 		},
+		computed: {
+			isAllFinished() {
+				return this.list.every(i => {
+					return i.selected
+				})
+			}
+		},
 		methods: {
-
+			onChange(swiper, index) {
+				this.currentQuestionIndex = index
+			},
+			slideTo(index) {
+				this.$refs.zSwiper.swiper.slideTo(index); //切换到第三个slide，速度为1秒
+			},
+			// 答题
+			handleAnsower(i, item) {
+				this.list = this.list.map(ele => {
+					if (ele.index === item.index) {
+						ele.selected = i.key
+					}
+					return ele
+				})
+			}
 		}
 	}
 </script>
@@ -170,26 +200,39 @@
 		width: 100%;
 		height: 100vh;
 		overflow-x: hidden;
+		overflow-y: auto;
 		background-image: url("/static/makeups/bg.png");
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
 
-		.bg-image {
-			/* The image used */
-			background-image: url("/static/makeups/bg.png");
+		.tihao {
+			display: flex;
+			padding: 32rpx;
+			flex-wrap: wrap;
 
-			/* Add the blur effect */
-			filter: blur(8px);
-			-webkit-filter: blur(8px);
+			.item {
+				border-radius: 50%;
+				width: 36px;
+				line-height: 36px;
+				height: 36px;
+				color: var(--tips-grey);
+				background: #fff;
+				text-align: center;
 
-			/* Full height */
-			height: 100%;
+				margin-right: 30rpx;
 
-			/* Center and scale the image nicely */
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
+				&.current {
+					color: var(--main-red);
+					background: var(--tips-red);
+				}
+
+				&.finished {
+					color: #fff;
+					background: linear-gradient(90deg, #FF7B7B 0%, #F53F3F 100%);
+					;
+				}
+			}
 		}
 
 		.card-item {
